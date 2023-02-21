@@ -32,12 +32,14 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Awesome Books <a name="about-project"></a>
+# 📖 To Do List <a name="about-project"></a>
 
-Webpack Project setup is a simple and powerful webpack boilerplate,.
+To Do List is a simple and powerful application built with webpack.
 
 ## 🛠 Built With <a name="built-with"></a>
 webpack
+## Screenshoot
+![screenshot](./Screenshot.png)
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
@@ -105,22 +107,22 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 ```sh
   cd my-folder
-  git clone git@github.com/ZewdieMc/webpack-project-setup.git
+  git clone git@github.com/ZewdieMc/To-Do-List.git
 ```
 ### Install
 
 Install this project with:
 ```sh
-  cd webpack-project-setup
+  cd To-Do-List
   npm install
 ```
 
 ### Usage
 
 To run the project:
- - `npm start`
+ - `npm run dev`
 
-<!-- ### Run tests
+### Run tests
 
 To run tests, run the following command:
 
@@ -135,7 +137,7 @@ To check for css errors run:
 To check for js errors run:
 ```sh
   npx eslint .
-``` -->
+```
 
 ### Deployment
 
@@ -158,7 +160,7 @@ Deployed using Github Pages.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- Use webpack to bundle modules
+- Implement `Add` and `Remove` events in the todo-list
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -169,7 +171,7 @@ Deployed using Github Pages.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/ZewdieMc/webpack-project-setup/issues).
+Feel free to check the [issues page](https://github.com/ZewdieMc/To-Do-List/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
