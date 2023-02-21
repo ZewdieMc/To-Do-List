@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/ZewdieMc/webpack-project-setup#readme",
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
     "sass": "^1.58.3",
