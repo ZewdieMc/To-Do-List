@@ -10,22 +10,26 @@ module.exports = {
   devServer: {
     static: './dist',
   },
-  plugins:[
+  plugins: [
     new HtmlWebpackPlugin({
-      template : path.resolve(__dirname, 'src', 'index.html')
-    })
+      template: path.resolve(__dirname, 'src', 'index.html'),
+    }),
   ],
   module: {
     rules: [
       {
-        test: /\.css$/i,
+        test: /\.(sass|scss|css)$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
-      }
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.(svg|eot|woff|woff2|ttf)$/,
+        use: ['file-loader'],
+      },
     ],
   },
 };
