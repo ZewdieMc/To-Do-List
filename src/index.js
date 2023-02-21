@@ -1,11 +1,16 @@
-import _ from 'lodash';
+import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
+import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
+import PupulateList from './modules/displayList.js';
 
-function component () {
-  const element = document.createElement('div');
+const todoObjects = [
+  { description: 'Do the dishes', completed: false, index: 0 },
+  { description: 'Wash the car', completed: false, index: 1 },
+  { description: 'Do the laundry', completed: false, index: 2 },
+];
 
-  element.innerHTML = _.join(['Hey whats up', 'webpack'], ' ');
-  return element;
-}
-
-document.body.appendChild(component());
+window.onload = () => {
+  const todoList = document.querySelector('.todo-list');
+  todoList.append(...PupulateList(todoObjects));
+};

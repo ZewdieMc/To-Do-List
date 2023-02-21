@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <h3><b>Awesome Books - ES6</b></h3>
+  <h3><b>TO DO List</b></h3>
 
 </div>
 

@@ -1,5 +1,5 @@
 {
-  "name": "webpack-project-setup",
+  "name": "To-Do-List",
   "version": "1.0.0",
   "description": "Webpack setup project",
   "private": true,
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZewdieMc/webpack-project-setup.git"
+    "url": "git+https://github.com/ZewdieMc/To-Do-List.git"
   },
   "author": "Zewdie Habtie",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ZewdieMc/webpack-project-setup/issues"
+    "url": "https://github.com/ZewdieMc/To-Do-List/issues"
   },
-  "homepage": "https://github.com/ZewdieMc/webpack-project-setup#readme",
+  "homepage": "https://github.com/ZewdieMc/To-Do-List#readme",
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
@@ -38,6 +38,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.3.0",
     "babel-eslint": "^10.1.0",
+    "bootstrap": "^5.3.0-alpha1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.27.5",
@@ -45,6 +46,7 @@
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
-    "stylelint-scss": "^3.21.0"
+    "stylelint-scss": "^3.21.0",
+    "webpack-bundle-analyzer": "^4.8.0"
   }
 }
