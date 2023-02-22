@@ -4,19 +4,12 @@ export default (todoObjects) => todoObjects.map((todo) => {
   li.setAttribute('data-index', todo.index);
   li.setAttribute('data-completed', todo.completed);
 
-  const checkbox = document.createElement('input');
-  checkbox.setAttribute('type', 'checkbox');
-
-  const input = document.createElement('input');
-  input.setAttribute('type', 'text');
-  input.classList.add('todo-input');
-  input.setAttribute('value', todo.description);
-
-  const ellipsisIcon = document.createElement('i');
-  ellipsisIcon.classList.add('fas', 'fa-ellipsis-v', 'todo-ellipsis');
-
-  li.append(checkbox);
-  li.append(input);
-  li.append(ellipsisIcon);
+  li.innerHTML = `
+  <input type='checkbox' class='todo-check'/>
+  <i class='fa-regular fa-circle-check todo-completed fa-2x'></i>
+  <input type='text' class='todo-edit' value='${todo.description}'/>
+  <i class="fas fa-ellipsis-v todo-ellipsis"></i>
+  <div class='todo-delete'><i class="fa-regular fa-trash-can"></i></div>
+  `;
   return li;
 });
