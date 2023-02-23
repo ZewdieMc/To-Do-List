@@ -5,7 +5,6 @@ export default class CRUD {
     this.todoObjects = [];
   }
 
-  // *Add new todo object to todoObjects array
  static addTodo = (event) => {
    this.todoObjects.push(
      new Todo(
@@ -17,7 +16,6 @@ export default class CRUD {
    event.target.value = '';
  };
 
- // !Remove todo object from todoObjects array
  static deleteTodo = (index) => {
    this.todoObjects.splice(index, 1);
    this.todoObjects.forEach((todo, i) => {
@@ -25,7 +23,6 @@ export default class CRUD {
    });
  };
 
- //  ?Update todo object in todoObjects array
  static updateTodo = (index, value) => {
    this.todoObjects[index].description = value;
  };
