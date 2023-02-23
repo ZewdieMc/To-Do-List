@@ -50,11 +50,30 @@ form {
   align-items: center;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #eee;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.todo-list .todo-item:hover {
-  background-color: rgb(243, 227, 176);
+.todo-item .hide {
+  display: none;
+}
+
+.todo-item .todo-completed {
+  color: green;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+}
+
+.todo-item .todo-check,
+.todo-item .todo-delete {
+  cursor: pointer;
+  color: #ccc;
+}
+
+.todo-item .todo-check:hover {
+  color: green;
+}
+
+.todo-item .todo-delete:hover {
+  color: red;
 }
 
 .todo-list li .todo-ellipsis {
