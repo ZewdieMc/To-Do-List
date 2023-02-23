@@ -68,6 +68,10 @@ form {
   color: #ccc;
 }
 
+.todo-item .todo-check:hover {
+  color: green;
+}
+
 .todo-item .todo-delete:hover {
   color: red;
 }

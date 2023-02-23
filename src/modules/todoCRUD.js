@@ -20,7 +20,6 @@ const deleteTodo = (index) => {
   todoObjects.forEach((todo, i) => {
     todo.index = i;
   });
-  // console.log('after', todoObjects);
 };
 
 //  ?Update todo object in todoObjects array
@@ -29,7 +28,7 @@ const updateTodo = (index, value) => {
 };
 
 const completeTodo = (index) => {
-  todoObjects[index].completed = true;
+  todoObjects[index].completed = !todoObjects[index].completed;
 };
 
 export {

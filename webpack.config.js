@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
@@ -16,7 +14,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
   module: {
     rules: [
@@ -25,12 +23,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
-      },
-      {
-        test: /\.(svg|eot|woff|woff2|ttf)$/,
+        test: /\.(svg)$/,
         use: ['file-loader'],
       },
     ],

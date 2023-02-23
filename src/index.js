@@ -19,9 +19,9 @@ window.onload = () => {
   const saveToLocalStorage = () => {
     localStorage.setItem('todoObjects', JSON.stringify(todoObjects));
   };
+
   const updateUI = () => {
     todoList.innerHTML = '';
-    todoObjects = JSON.parse(localStorage.getItem('todoObjects'));
     todoList.append(...PupulateList(todoObjects));
   };
 
@@ -30,12 +30,24 @@ window.onload = () => {
     const todoComplete = document.querySelectorAll('.todo-check');
     const todoDelete = document.querySelectorAll('.todo-delete');
 
-    todoEdit.forEach((todo, index) => {
-      todo.addEventListener('input', (e) => {
+    todoEdit.forEach((input, index) => {
+      input.addEventListener('input', (e) => {
         updateTodo(index, e.target.value);
         saveToLocalStorage();
-        updateUI();
-        registerListEvents();
+      });
+    });
+
+    todoEdit.forEach((input) => {
+      input.addEventListener('click', () => {
+        input.parentElement.style.backgroundColor = '#f1f8b5';
+        input.style.backgroundColor = '#f1f8b5';
+      });
+    });
+
+    todoEdit.forEach((input) => {
+      input.addEventListener('mouseout', () => {
+        input.parentElement.style.backgroundColor = '#fff';
+        input.style.backgroundColor = '#fff';
       });
     });
 
@@ -49,8 +61,10 @@ window.onload = () => {
     });
 
     todoComplete.forEach((todo, index) => {
-      todo.addEventListener('change', () => {
+      todo.addEventListener('click', () => {
         completeTodo(index);
+        todo.nextElementSibling.style.display = 'block !important';
+        todo.style.display = 'none !important';
         saveToLocalStorage();
         updateUI();
         registerListEvents();
