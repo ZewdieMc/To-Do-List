@@ -57,19 +57,20 @@ form {
   display: none;
 }
 
-.todo-item .todo-completed {
-  color: green;
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
-}
-
+.todo-item .todo-completed,
 .todo-item .todo-check,
 .todo-item .todo-delete {
   cursor: pointer;
   color: #ccc;
 }
 
-.todo-item .todo-check:hover {
+.todo-item .todo-check:hover,
+.todo-item .todo-completed:hover {
   color: green;
+}
+
+.todo-item .line-through {
+  text-decoration: line-through;
 }
 
 .todo-item .todo-delete:hover {
@@ -91,6 +92,7 @@ input[type*='text'] {
   outline: none;
   flex-grow: 4;
   font-size: 16px;
+  background-color: transparent;
 }
 
 .clear-todo {
