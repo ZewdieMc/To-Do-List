@@ -2,7 +2,7 @@ import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
 import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-import PupulateList from './modules/displayList.js';
+import PopulateList from './modules/displayList.js';
 import CRUD from './modules/todoCRUD.js';
 
 window.onload = () => {
@@ -13,7 +13,7 @@ window.onload = () => {
   CRUD.todoObjects = JSON.parse(localStorage.getItem('todoObjects')) || [];
   const updateUI = () => {
     todoList.innerHTML = '';
-    todoList.append(...PupulateList(JSON.parse(localStorage.getItem('todoObjects'))));
+    todoList.append(...PopulateList(JSON.parse(localStorage.getItem('todoObjects'))));
   };
 
   const saveToLocalStorage = () => {
@@ -65,8 +65,10 @@ window.onload = () => {
     });
   };
 
-  updateUI();
-  registerListEvents();
+  if (CRUD.todoObjects.length) {
+    updateUI();
+    registerListEvents();
+  }
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
