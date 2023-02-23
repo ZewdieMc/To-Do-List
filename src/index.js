@@ -3,6 +3,7 @@ import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import PopulateList from './modules/displayList.js';
+import clearCompleted from './modules/todoStatus.js';
 import CRUD from './modules/todoCRUD.js';
 
 window.onload = () => {
@@ -22,8 +23,25 @@ window.onload = () => {
 
   const registerListEvents = () => {
     const todoEdit = document.querySelectorAll('.todo-edit');
-    const todoComplete = document.querySelectorAll('.todo-check');
+    const todoInComplete = document.querySelectorAll('.todo-check');
+    const todoComplete = document.querySelectorAll('.todo-completed');
     const todoDelete = document.querySelectorAll('.todo-delete');
+
+    const taskCompletionEvent = (task) => {
+      task.addEventListener('click', (e) => {
+        CRUD.completeTodo(task.parentElement.dataset.index);
+        saveToLocalStorage();
+        updateUI();
+        registerListEvents();
+        if (task.classList.contains('todo-check')) {
+          // todo: removve the line-through
+          e.currentTarget.nextElementSibling.classList.add('line-through');
+        } else if (task.classList.contains('todo-completed')) {
+          // todo: add the line-through
+          e.currentTarget.nextElementSibling.classList.remove('line-through');
+        }
+      });
+    };
 
     todoEdit.forEach((input, index) => {
       input.addEventListener('input', (e) => {
@@ -33,16 +51,16 @@ window.onload = () => {
     });
 
     todoEdit.forEach((input) => {
-      input.addEventListener('click', () => {
+      input.addEventListener('mousedown', () => {
         input.parentElement.style.backgroundColor = '#f1f8b5';
-        input.style.backgroundColor = '#f1f8b5';
+        input.nextElementSibling.nextElementSibling.classList.remove('hide');
+        input.nextElementSibling.classList.add('hide');
       });
     });
 
     todoEdit.forEach((input) => {
-      input.addEventListener('mouseout', () => {
+      input.parentElement.addEventListener('mouseout', () => {
         input.parentElement.style.backgroundColor = '#fff';
-        input.style.backgroundColor = '#fff';
       });
     });
 
@@ -55,15 +73,22 @@ window.onload = () => {
       });
     });
 
+    todoInComplete.forEach((todo) => {
+      taskCompletionEvent(todo);
+    });
+
     todoComplete.forEach((todo) => {
-      todo.addEventListener('click', () => {
-        CRUD.completeTodo(todo.parentElement.dataset.index);
-        saveToLocalStorage();
-        updateUI();
-        registerListEvents();
-      });
+      taskCompletionEvent(todo);
     });
   };
+
+  document.querySelector('.clear-todo').addEventListener('click',
+    () => {
+      clearCompleted(CRUD.todoObjects);
+      CRUD.todoObjects = JSON.parse(localStorage.getItem('todoObjects')) || [];
+      updateUI();
+      registerListEvents();
+    });
 
   if (CRUD.todoObjects.length) {
     updateUI();
