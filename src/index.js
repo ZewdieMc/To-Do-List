@@ -3,26 +3,21 @@ import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import PupulateList from './modules/displayList.js';
-import {
-  addTodo,
-  deleteTodo,
-  updateTodo,
-  todoObjects,
-  completeTodo,
-} from './modules/todoCRUD.js';
+import CRUD from './modules/todoCRUD.js';
 
 window.onload = () => {
   const form = document.querySelector('form');
   const inputTodo = document.querySelector('form .input-todo');
   const todoList = document.querySelector('.todo-list');
 
-  const saveToLocalStorage = () => {
-    localStorage.setItem('todoObjects', JSON.stringify(todoObjects));
-  };
-
+  CRUD.todoObjects = JSON.parse(localStorage.getItem('todoObjects')) || [];
   const updateUI = () => {
     todoList.innerHTML = '';
-    todoList.append(...PupulateList(todoObjects));
+    todoList.append(...PupulateList(JSON.parse(localStorage.getItem('todoObjects'))));
+  };
+
+  const saveToLocalStorage = () => {
+    localStorage.setItem('todoObjects', JSON.stringify(CRUD.todoObjects));
   };
 
   const registerListEvents = () => {
@@ -32,7 +27,7 @@ window.onload = () => {
 
     todoEdit.forEach((input, index) => {
       input.addEventListener('input', (e) => {
-        updateTodo(index, e.target.value);
+        CRUD.updateTodo(index, e.target.value);
         saveToLocalStorage();
       });
     });
@@ -53,24 +48,25 @@ window.onload = () => {
 
     todoDelete.forEach((todo, index) => {
       todo.addEventListener('click', () => {
-        deleteTodo(index);
+        CRUD.deleteTodo(index);
         saveToLocalStorage();
         updateUI();
         registerListEvents();
       });
     });
 
-    todoComplete.forEach((todo, index) => {
+    todoComplete.forEach((todo) => {
       todo.addEventListener('click', () => {
-        completeTodo(index);
-        todo.nextElementSibling.style.display = 'block !important';
-        todo.style.display = 'none !important';
+        CRUD.completeTodo(todo.parentElement.dataset.index);
         saveToLocalStorage();
         updateUI();
         registerListEvents();
       });
     });
   };
+
+  updateUI();
+  registerListEvents();
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -79,7 +75,7 @@ window.onload = () => {
   inputTodo.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
       e.preventDefault();
-      if (e.target.value) addTodo(e);
+      if (e.target.value) CRUD.addTodo(e);
       saveToLocalStorage();
       updateUI();
       registerListEvents();
