@@ -157,7 +157,7 @@ Deployed using Github Pages.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- Implement `Add` and `Remove` events in the todo-list
+- Implement `Drag` and `Drop` events to the todo items.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
