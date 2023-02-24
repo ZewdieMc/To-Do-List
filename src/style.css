@@ -110,6 +110,10 @@ input {
   font-size: 16px;
 }
 
+.clear-todo:hover {
+  text-decoration: underline;
+}
+
 form > input {
   font-style: italic;
 }
