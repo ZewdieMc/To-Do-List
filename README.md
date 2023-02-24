@@ -79,10 +79,7 @@ webpack
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-
-```
-N/A
-```
+See the [Live Demo](https://zewdiemc.github.io/To-Do-List/dist/) of the project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -120,7 +117,7 @@ Install this project with:
 ### Usage
 
 To run the project:
- - `npm run dev`
+ - `npm start`
 
 ### Run tests
 
