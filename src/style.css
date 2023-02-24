@@ -21,7 +21,6 @@ body {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   width: 70vw;
   background-color: white;
-  padding: 2rem 0 0;
 }
 
 form > .press-enter,
@@ -36,6 +35,10 @@ form {
   align-items: center;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #eee;
+}
+
+.todo-header {
+  padding: 1.5rem 1rem;
 }
 
 .todo-list {
