@@ -89,7 +89,7 @@ form {
   color: #000;
 }
 
-input[type*='text'] {
+input {
   border: none;
   padding: 10px;
   outline: none;
@@ -110,7 +110,7 @@ input[type*='text'] {
   font-size: 16px;
 }
 
-form > input[type='text'] {
+form > input {
   font-style: italic;
 }
 
