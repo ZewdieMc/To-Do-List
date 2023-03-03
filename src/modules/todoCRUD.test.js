@@ -48,3 +48,14 @@ describe('Test Edit function', () => {
     expect(lastTodoItem.value).toEqual('Second todo item');
   });
 });
+
+describe('Test updateTodoStatus function', () => {
+  test('Check toggle completed status function', () => {
+    todoList.completeTodo(0);
+    let firstTodoItem = document.querySelector('.todo-list li:first-child');
+    expect(firstTodoItem.dataset.completed).toBe('true');
+    todoList.completeTodo(0);
+    firstTodoItem = document.querySelector('.todo-list li:first-child');
+    expect(firstTodoItem.dataset.completed).toBe('false');
+  });
+});
