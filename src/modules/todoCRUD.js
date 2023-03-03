@@ -1,42 +1,45 @@
 import Todo from './todo.js';
 import { storeData, readData } from './localStorage.js';
 
-export default class CRUD {
+class TodoList {
   constructor() {
-    this.todoObjects = [];
+    this.list = [];
   }
 
- static addTodo = (event) => {
-   this.todoObjects.push(
+ addTodo = (data) => {
+   this.list.push(
      new Todo(
-       this.todoObjects.length,
+       this.list.length,
        false,
-       event.target.value,
+       data,
      ),
    );
-   event.target.value = '';
-   storeData(this.todoObjects);
+   storeData(this.list);
+   this.populateList();
  };
 
- static deleteTodo = (index) => {
-   this.todoObjects.splice(index, 1);
-   this.todoObjects.forEach((todo, i) => {
+ deleteTodo = (index) => {
+   this.list.splice(index, 1);
+   this.list.forEach((todo, i) => {
      todo.index = i;
    });
-   storeData(this.todoObjects);
+   storeData(this.list);
+   this.populateList();
  };
 
- static updateTodo = (index, value) => {
-   this.todoObjects[index].description = value;
-   storeData(this.todoObjects);
+ updateTodo = (index, value) => {
+   this.list[index].description = value;
+   storeData(this.list);
+   this.populateList();
  };
 
- static completeTodo = (index) => {
-   this.todoObjects[index].completed = !this.todoObjects[index].completed;
-   storeData(this.todoObjects);
+ completeTodo = (index) => {
+   this.list[index].completed = !this.list[index].completed;
+   storeData(this.list);
+   this.populateList();
  };
 
- static getListsHTML = (lists) => lists.map((todo) => {
+ getListsHTML = (lists) => lists.map((todo) => {
    const li = document.createElement('li');
    li.classList.add('todo-item');
    li.setAttribute('data-index', todo.index);
@@ -67,8 +70,8 @@ export default class CRUD {
    trashIconContainer.className = 'todo-delete hide';
 
    todoDescription.addEventListener('input', () => {
-     CRUD.updateTodo(li.dataset.index, todoDescription.value);
-     CRUD.populateList();
+     this.updateTodo(li.dataset.index, todoDescription.value);
+     this.populateList();
    });
 
    todoDescription.addEventListener('mousedown', () => {
@@ -82,20 +85,20 @@ export default class CRUD {
    });
 
    trashIconContainer.addEventListener('click', () => {
-     CRUD.deleteTodo(li.dataset.index);
-     CRUD.populateList();
+     this.deleteTodo(li.dataset.index);
+     this.populateList();
    });
 
    completedIconContainer.addEventListener('click', () => {
-     CRUD.completeTodo(li.dataset.index);
+     this.completeTodo(li.dataset.index);
      todoDescription.style.textDecoration = todo.completed ? 'line-through' : 'none';
-     CRUD.populateList();
+     this.populateList();
    });
 
    incompleteIconContainer.addEventListener('click', () => {
-     CRUD.completeTodo(li.dataset.index);
+     this.completeTodo(li.dataset.index);
      todoDescription.style.textDecoration = todo.completed ? 'line-through' : 'none';
-     CRUD.populateList();
+     this.populateList();
    });
 
    const trashIcon = document.createElement('i');
@@ -109,9 +112,12 @@ export default class CRUD {
    return li;
  });
 
- static populateList = () => {
+ populateList = () => {
    const listContainer = document.querySelector('.todo-list');
    listContainer.innerHTML = '';
-   listContainer.append(...CRUD.getListsHTML(readData()));
+   listContainer.append(...this.getListsHTML(readData()));
  }
 }
+
+const todoList = new TodoList();
+export default todoList;
