@@ -59,3 +59,18 @@ describe('Test updateTodoStatus function', () => {
     expect(firstTodoItem.dataset.completed).toBe('false');
   });
 });
+
+describe('Test clear all completed function', () => {
+  test('Clear completed', () => {
+    todoList.completeTodo(1);
+    clearCompleted(todoList.list);
+    todoList.populateList();
+    let listItems = document.querySelectorAll('.todo-list li');
+    expect(listItems.length).toBe(1);
+    todoList.completeTodo(0);
+    clearCompleted(todoList.list);
+    todoList.populateList();
+    listItems = document.querySelectorAll('.todo-list li');
+    expect(listItems.length).toBe(0);
+  });
+});
