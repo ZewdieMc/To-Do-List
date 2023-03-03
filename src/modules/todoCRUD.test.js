@@ -2,50 +2,49 @@
  * @jest-environment jsdom
  */
 import todoList from './todoCRUD.js';
+import clearCompleted from './todoStatus.js';
 
 document.body.innerHTML = `
-<div class="todo-container">
 <ul class="todo-list"></ul>
 <div class="clear-todo">Clear All Completed </div>
-</div>
 `;
-describe('Test Add and Remove functions of the ToDo', () => {
-  test('Test first Add', () => {
+describe('Test Add function', () => {
+  test('Add first Item', () => {
     todoList.addTodo('test 1');
     const list = document.querySelectorAll('.todo-list li');
     expect(list).toHaveLength(1);
   });
-  test('Test second Add', () => {
+  test('Add second Item', () => {
     todoList.addTodo('test 2');
     const list = document.querySelectorAll('.todo-list li');
     expect(list).toHaveLength(2);
   });
-  test('Test third Add', () => {
-    todoList.addTodo('test 3');
-    const list = document.querySelectorAll('.todo-list li');
-    expect(list).toHaveLength(3);
-  });
 });
 
-describe('Test Remove', () => {
-  test('Test first remove', () => {
-    todoList.deleteTodo(0);
-    const list = document.querySelectorAll('.todo-list li');
-    expect(list).toHaveLength(2);
-  });
-  test('Test second remove', () => {
+describe('Test Remove function', () => {
+  test('Remove first Item', () => {
     todoList.deleteTodo(0);
     const list = document.querySelectorAll('.todo-list li');
     expect(list).toHaveLength(1);
   });
-  test('Test third remove', () => {
+  test('Remove second Item', () => {
     todoList.deleteTodo(0);
     const list = document.querySelectorAll('.todo-list li');
     expect(list).toHaveLength(0);
   });
-  test('Test fourth remove', () => {
-    todoList.deleteTodo(0);
-    const list = document.querySelectorAll('.todo-list li');
-    expect(list).toHaveLength(0);
+});
+
+describe('Test Edit function', () => {
+  test('Edit first item', () => {
+    todoList.addTodo('first todo item');
+    todoList.updateTodo(0, 'First todo item');
+    const firstTodoItem = document.querySelector('.todo-list li:first-child > input');
+    expect(firstTodoItem.value).toEqual('First todo item');
+  });
+  test('Edit last item', () => {
+    todoList.addTodo('second todo item');
+    todoList.updateTodo(todoList.list.length - 1, 'Second todo item');
+    const lastTodoItem = document.querySelector('.todo-list li:last-child > input');
+    expect(lastTodoItem.value).toEqual('Second todo item');
   });
 });

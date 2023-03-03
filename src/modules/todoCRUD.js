@@ -28,13 +28,13 @@ class TodoList {
  };
 
  updateTodo = (index, value) => {
-   this.list[index].description = value;
+   if (this.list[index]) this.list[index].description = value;
    storeData(this.list);
    this.populateList();
  };
 
  completeTodo = (index) => {
-   this.list[index].completed = !this.list[index].completed;
+   if (this.list[index]) { this.list[index].completed = !this.list[index].completed; }
    storeData(this.list);
    this.populateList();
  };
