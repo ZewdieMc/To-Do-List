@@ -41,7 +41,7 @@ describe('Test Edit function', () => {
     const firstTodoItem = document.querySelector('.todo-list li:first-child > input');
     expect(firstTodoItem.value).toEqual('First todo item');
   });
-  test('Edit last item', () => {
+  test('Edit last item function', () => {
     todoList.addTodo('second todo item');
     todoList.updateTodo(todoList.list.length - 1, 'Second todo item');
     const lastTodoItem = document.querySelector('.todo-list li:last-child > input');
