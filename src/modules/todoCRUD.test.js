@@ -50,7 +50,7 @@ describe('Test Edit function', () => {
 });
 
 describe('Test updateTodoStatus function', () => {
-  test('Check toggle completed status function', () => {
+  test('Check if todo status changes on completion', () => {
     todoList.completeTodo(0);
     let firstTodoItem = document.querySelector('.todo-list li:first-child');
     expect(firstTodoItem.dataset.completed).toBe('true');
