@@ -60,7 +60,7 @@ describe('Test updateTodoStatus function', () => {
   });
 });
 
-describe('Test clear all completed function', () => {
+describe('Test clearAllCmpleted function', () => {
   test('Clear completed', () => {
     todoList.completeTodo(1);
     clearCompleted(todoList.list);
