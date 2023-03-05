@@ -1,8 +1,8 @@
 import { storeData } from './localStorage.js';
 
-const clearCompleted = (todoObjects) => {
-  if (Array.isArray(todoObjects) && todoObjects.length) {
-    const incomplete = todoObjects.filter((todo) => !todo.completed);
+const clearCompleted = (todoList) => {
+  if (Array.isArray(todoList.list) && todoList.list.length) {
+    const incomplete = todoList.list.filter((todo) => !todo.completed);
     incomplete.forEach((todo, index) => {
       todo.index = index;
     });

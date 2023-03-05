@@ -10,8 +10,8 @@ window.onload = () => {
 
   document.querySelector('.clear-todo').addEventListener('click',
     () => {
-      clearCompleted(todoList.todoObjects);
-      todoList.todoObjects = readData();
+      clearCompleted(todoList);
+      todoList.list = readData();
       todoList.populateList();
     });
 
@@ -25,6 +25,7 @@ window.onload = () => {
 
   inputTodo.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
+      e.preventDefault();
       if (inputTodo.value) todoList.addTodo(inputTodo.value);
       inputTodo.value = '';
     }
