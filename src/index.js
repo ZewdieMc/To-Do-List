@@ -6,7 +6,7 @@ import { readData } from './modules/localStorage.js';
 window.onload = () => {
   const form = document.querySelector('form');
   const inputTodo = document.querySelector('form .input-todo');
-  todoList.todoObjects = readData();
+  todoList.list = readData();
 
   document.querySelector('.clear-todo').addEventListener('click',
     () => {
@@ -15,7 +15,7 @@ window.onload = () => {
       todoList.populateList();
     });
 
-  if (todoList.todoObjects.length) {
+  if (todoList.list.length) {
     todoList.populateList();
   }
 
