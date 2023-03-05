@@ -62,7 +62,7 @@ class TodoList {
    todoDescription.type = 'text';
    todoDescription.className = 'todo-edit';
    todoDescription.value = todo.description;
-   todoDescription.classList.add(todo.completed ? 'completed' : 'incomplete');
+   if (todo.completed) todoDescription.classList.add('completed');
 
    const ellipsisIcon = document.createElement('i');
    ellipsisIcon.className = 'fas fa-ellipsis-v todo-ellipsis fa-2x';
