@@ -30,7 +30,6 @@ class TodoList {
  updateTodo = (index, value) => {
    if (this.list[index]) this.list[index].description = value;
    storeData(this.list);
-   this.populateList();
  };
 
  completeTodo = (index) => {
@@ -71,7 +70,6 @@ class TodoList {
 
    todoDescription.addEventListener('input', () => {
      this.updateTodo(li.dataset.index, todoDescription.value);
-     this.populateList();
    });
 
    todoDescription.addEventListener('mousedown', () => {
@@ -86,19 +84,16 @@ class TodoList {
 
    trashIconContainer.addEventListener('click', () => {
      this.deleteTodo(li.dataset.index);
-     this.populateList();
    });
 
    completedIconContainer.addEventListener('click', () => {
      this.completeTodo(li.dataset.index);
      todoDescription.style.textDecoration = todo.completed ? 'line-through' : 'none';
-     this.populateList();
    });
 
    incompleteIconContainer.addEventListener('click', () => {
      this.completeTodo(li.dataset.index);
      todoDescription.style.textDecoration = todo.completed ? 'line-through' : 'none';
-     this.populateList();
    });
 
    const trashIcon = document.createElement('i');
