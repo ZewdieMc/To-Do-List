@@ -43,6 +43,7 @@ class TodoList {
    li.classList.add('todo-item');
    li.setAttribute('data-index', todo.index);
    li.setAttribute('data-completed', todo.completed);
+   li.setAttribute('draggable', true);
 
    const completedIconContainer = document.createElement('div');
    completedIconContainer.className = 'todo-completed';
@@ -61,6 +62,7 @@ class TodoList {
    todoDescription.type = 'text';
    todoDescription.className = 'todo-edit';
    todoDescription.value = todo.description;
+   todoDescription.classList.add(todo.completed ? 'completed' : 'incomplete');
 
    const ellipsisIcon = document.createElement('i');
    ellipsisIcon.className = 'fas fa-ellipsis-v todo-ellipsis fa-2x';
@@ -88,12 +90,10 @@ class TodoList {
 
    completedIconContainer.addEventListener('click', () => {
      this.completeTodo(li.dataset.index);
-     todoDescription.style.textDecoration = todo.completed ? 'line-through' : 'none';
    });
 
    incompleteIconContainer.addEventListener('click', () => {
      this.completeTodo(li.dataset.index);
-     todoDescription.style.textDecoration = todo.completed ? 'line-through' : 'none';
    });
 
    const trashIcon = document.createElement('i');
@@ -104,6 +104,21 @@ class TodoList {
    li.append(todoDescription);
    li.append(ellipsisIcon);
    li.append(trashIconContainer);
+
+   li.addEventListener('dragstart', (event) => {
+     event.dataTransfer.dropEffect = 'move';
+     event.dataTransfer.setData('text/html', li.innerHTML);
+   });
+   li.addEventListener('dragover', (event) => {
+     event.dataTransfer.dropEffect = 'move';
+     event.preventDefault();
+   });
+   li.addEventListener('drop', (event) => {
+     event.preventDefault();
+     const data = event.dataTransfer.getData('text/html');
+     li.innerHTML = data;
+   });
+
    return li;
  });
 
