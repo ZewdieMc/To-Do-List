@@ -25,7 +25,6 @@ window.onload = () => {
 
   inputTodo.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
-      e.preventDefault();
       if (inputTodo.value) todoList.addTodo(inputTodo.value);
       inputTodo.value = '';
     }
