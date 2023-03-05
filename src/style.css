@@ -19,7 +19,6 @@ body {
   flex-direction: column;
   justify-content: center;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  width: 70vw;
   background-color: white;
 }
 
@@ -96,6 +95,12 @@ input {
   flex-grow: 4;
   font-size: 16px;
   background-color: transparent;
+}
+
+.todo-edit.completed {
+  font-weight: bolder;
+  color: darkgray;
+  text-decoration: line-through;
 }
 
 .clear-todo {
