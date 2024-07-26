@@ -79,7 +79,7 @@ webpack
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-See the [Live Demo](https://zewdiemc.github.io/To-Do-List/dist/) of the project.
+See the [Live Demo](https://react-todo-zed.netlify.app/) of the project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
